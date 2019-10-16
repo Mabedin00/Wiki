@@ -1,16 +1,19 @@
-# NOT COMPLETE, UNTESTED
-# import stuff
+# UNTESTED
+# Make sure you guys's variable names sync with these
+# Change something if it's wrong/incompatible, but make a note
+
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 @app.route('/')
 def main():
     # form for add page
     # form for go to page
     # list of pages
-    # return render template of landing page
+    return render_template('index.html')
 
 @app.route('/add')
-def add():           # not sure if form syntax is correct
-    addToDB(request.form.get('page'), request.form.get('text'))
+def add():           # args is for get, form is for post. I think get should work? But not sure
+    addToDB(request.args.get('page'), request.args.get('text'))
     flash("Your page has been successfully added to wiki!") # include page name in message later
     return redirect(url_for('/'))
 
